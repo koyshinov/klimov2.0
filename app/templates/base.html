@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Тест Климова</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <script src="/static/jquery.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {% if us[1]=='admin' %}
+      <a class="navbar-brand" href="/">Админ панель</a>
+      {% else %}
+      <a class="navbar-brand" href="/">Тест Климова</a>
+      {% endif %}
+    </div>
+    {% if us[1]=='admin' %}
+    <div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- <li><a href="/user">Пользователи</a></li> -->
+
+        <li>
+        <a class="dropdown-toggle" data-toggle="dropdown" id="themes">Пользователи<span class="caret"></span></a>
+        <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><a href="/user">Без группы</a></li>
+                {% for i in groups %}
+                <li><a href="/user/group/{{i}}">Группа {{i}}</a></li>
+                {% endfor %}
+        </ul>
+        </li>
+
+
+        <li><a href="/result">Результаты</a></li>
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          
+          <a class="navbar-brand">{{ us[0] }}</a>
+          <div class="navbar-form navbar-right">
+          <a class="btn btn-success" href="/logout" role="button">Выйти</a>
+          </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% if err %}
+<div class="alert container alert-danger fade in alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+    {{err}}
+</div>
+{% endif %}
+
+{% block content %}{% endblock %}
+  
+</body>
+</html>

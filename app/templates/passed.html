@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class="container">
+
+&nbsp
+
+<table class='table table-hover'>
+	 	<thead>
+	 		<tr>
+	 			<th>ID</th>
+        		<th>Логин</th>
+				    <th>ФИО</th>
+				    <th>Ответы</th>
+        		<th>Дата</th>
+        		<th>Ч-Ч</th>
+        		<th>Ч-ЗС</th>
+        		<th>Ч-ХО</th>
+        		<th>Ч-Т</th>
+        		<th>Ч-П</th>
+			</tr>
+	 	</thead>
+
+
+		<tbody>
+      {% for i in results %}
+			<tr>
+        {% for j in i %}
+				<td>{{j}}</td>
+			  {% endfor %}	
+      </tr>
+      {% endfor %}
+		</tbody>
+	</table>
+
+&nbsp;
+
+	<div class="well bs-component">
+              <form class="form-horizontal" action="/result" method="POST">
+                <fieldset>
+                  <legend>Фильтры</legend>
+                  
+                  <div class="form-group">
+                    <label for="inputMonth" class="col-lg-2 control-label">Месяц</label>
+                    <div class="col-lg-10">
+
+                      <select class="form-control" name="month" id="inputMonth" >
+                        <option>Все</option>
+                        {% for i in inp_month %}
+                        <option>{{i[0]}}, {{i[1]}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputGroup" class="col-lg-2 control-label">Группа</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" name="group" id="inputGroup">
+                        <option>Все</option>
+                        {% for i in groups %}
+                        <option>{{i}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+                  
+                  <div class="form-group">
+                    <label for="inputLogin" class="col-lg-2 control-label">Логин</label>
+                    <div class="col-lg-10">
+                      <input class="form-control" name="login" id="inputLogin" value="Все">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputCount" class="col-lg-2 control-label">Количество</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" name="count" id="inputCount" >
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                        <option>200</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <legend>Сортировка</legend>
+
+                  <div class="form-group">
+                    <label for="inputSort" class="col-lg-2 control-label">Упорядочить по</label>
+                    <div class="col-lg-10">
+                      <select class="form-control" name="sortby" id="inputSort">
+                        <option>Дате</option>
+                        <option>ФИО</option>
+                        <option>Группе</option>
+                        <option>Ч-Ч</option>
+                        <option>Ч-ЗС</option>
+                        <option>Ч-ХО</option>
+                        <option>Ч-Т</option>
+                        <option>Ч-П</option>
+                      </select>
+                    </div>
+                  </div>
+
+       			 <div class="form-group">
+                    <label class="col-lg-2 control-label">По</label>
+                    <div class="col-lg-10">
+                      <div class="radio">
+                        <label>
+                          <input name="by" id="0" value="DESC" checked="" type="radio">
+                          убыванию
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input name="by" id="1" value="ASC" type="radio">
+                          возрастанию
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-default">Выполнить</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+</div>
+
+{% endblock %}

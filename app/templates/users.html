@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+&nbsp
+
+<table class='table table-hover'>
+	 	<thead>
+	 		<tr>
+	 			<th>Логин</th>
+        <th>ФИО</th>
+				<th>Группа</th>
+				<th>Права</th>
+        <th>Удалить</th>
+			</tr>
+	 	</thead>
+		<tbody>
+			{% for i in data %}
+			<tr>
+			{% for j in i %}
+				<td>{{j}}</td>
+			{% endfor %}
+			<td>
+			 <form action="/user/delete" method="post">
+				  <button type="submit" name="login" value="{{i[0]}}" type="button" class="btn btn-default btn-sm">
+				  <span class="glyphicon">X</span></button>
+			 </form>
+			</td>
+      </tr>
+			{% endfor %}
+	</tbody>
+	</table>
+
+&nbsp;
+
+	<div class="well bs-component">
+              <form class="form-horizontal" action="/user/edit" method="POST">
+                <fieldset>
+                  <legend>Создать / изменить</legend>
+                  <div class="form-group">
+                    <label for="inputLogin" class="col-lg-2 control-label">Логин</label>
+                    <div class="col-lg-10">
+                      <input class="form-control" name="login" id="inputLogin" placeholder="Логин" type="text">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputFIO" class="col-lg-2 control-label">ФИО</label>
+                    <div class="col-lg-10">
+                      <input class="form-control" name="fio" id="inputFIO" placeholder="ФИО" type="text">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputGroup" class="col-lg-2 control-label">Группа</label>
+                    <div class="col-lg-10">
+                      <input class="form-control" name="group" id="inputGroup" placeholder="Группа" type="text">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Пароль</label>
+                    <div class="col-lg-10">
+                      <input class="form-control" name="passw1" id="inputPassword" placeholder="Пароль" type="password">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputPassword2" class="col-lg-2 control-label">Повторить пароль</label>
+                    <div class="col-lg-10">
+                      <input class="form-control" name="passw2" id="inputPassword2" placeholder="Пароль" type="password">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">Права</label>
+                    <div class="col-lg-10">
+                      <div class="radio">
+                        <label>
+                          <input name="role" id="admin" value="admin" checked="" type="radio">
+                          Администратор
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input name="role" id="student" value="student" type="radio">
+                          Пользователь
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input name="role" id="blocked" value="blocked" type="radio">
+                          Заблокированный
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+        <div class="form-group">
+                    <label class="col-lg-2 control-label">Действие</label>
+                    <div class="col-lg-10">
+                      <div class="radio">
+                        <label>
+                          <input name="act" id="1" value="edit" checked="" type="radio">
+                          Изменить
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input name="act" id="0" value="add" type="radio">
+                          Создать
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-default">Выполнить</button>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </form>
+            </div>
+
+</div>
+
+{% endblock %}

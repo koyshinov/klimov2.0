@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+      <div class="container">
+      	<h3>Внимательно прочитав оба утверждения, выберите то из них, которое привлекательно для Вас.</h3>
+      	<th>&nbsp;</th>
+	  <tbody>
+	  <form method="POST" action="/">
+	  	{% for i in name %}
+	  	<th>
+			{% if i[1] == "a" %}
+	  		<div class="well">
+	  		{% endif %}
+
+			<div class="radio">
+			  <label><input type="radio" name={{i[0]}} value={{i[1]}} >{{i[2]}}</label>
+			</div>
+			{% if i[1] == "b" %}
+			</div>
+			<th>&nbsp;</th>
+			{% endif %}
+		</th>
+	  	{% endfor %}
+	  	<button type="submit" class="btn btn-primary btn-lg">Сдать тест</button>
+	  </form>
+	  <th>&nbsp;</th>
+	  </tbody>
+
+      </div>
+    <div class="container">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+{% endblock %}
