@@ -23,7 +23,7 @@ Create all tables and first user with role admin
 Rewrite db settings in app/db_func.py:
 
 	host = 'localhost',
-        user = 'klimov',
+	user = 'klimov',
 	passwd = 'password'
 	
 Install others
