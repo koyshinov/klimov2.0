@@ -20,7 +20,8 @@ Create all tables and first user with role admin
 	
 	mysql> [all queries in file create_db.sql]
 
-Rewrite db settings in db_func.py:
+Rewrite db settings in app/db_func.py:
+
 	host = 'localhost',
         user = 'klimov',
 	passwd = 'password'
