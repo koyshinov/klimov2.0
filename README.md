@@ -20,6 +20,11 @@ Create all tables and first user with role admin
 	
 	mysql> [all queries in file create_db.sql]
 
+Rewrite db settings in db_func.py:
+	host = 'localhost',
+        user = 'klimov',
+	passwd = 'password'
+	
 Install others
 
 	# apt-get install python3-pip
