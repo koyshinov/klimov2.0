@@ -30,7 +30,8 @@ def list_group(users):
     for i in users:
         if i[2] not in groups:
             groups.append(i[2])
-    groups.remove("")
+    if "" in groups:
+        groups.remove("")
     return(groups)
 
 
