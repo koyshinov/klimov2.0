@@ -29,6 +29,6 @@ Rewrite db settings in app/db_func.py:
 Install others
 
 	# apt-get install python3-pip
-	# apt-get install python-mysqldb
+	# apt-get install python3-mysqldb
 	# pip3 install -r requirements.txt
 
